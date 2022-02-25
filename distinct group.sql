@@ -59,7 +59,7 @@ FROM World.country
 group by Continent
 order by `density` desc limit 3;
 
--- 各州別國家人口密度最多 前三名
+-- 國家人口密度最多 前三名
 
 SELECT distinct Name,
 	MAX(Population/SurfaceArea) as `density`
@@ -67,5 +67,17 @@ SELECT distinct Name,
 	where SurfaceArea >0
 
 group by Name
-
 order by `density` desc limit 3;
+
+
+-- 各州別國家人口密度最多 前三名
+-- SELECT DISTINCT Continent,  Name,
+-- 	(
+-- 		SELECT distinct Name,
+-- 			MAX(Population/SurfaceArea) as `density`
+-- 			where SurfaceArea >0
+-- 		group by Name
+-- 	) 
+-- 	as `top desnsity countries`
+-- FROM World.country
+-- group by Continent;
